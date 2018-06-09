@@ -1,5 +1,5 @@
 <h1><%= @restaurant.name %></h1>
-
+<%= image_tag @restaurant.image.url, width: '600px' %>
 <p>
   Opening Hours:<%= @restaurant.opening_hours %><br>
   Tel: <%= @restaurant.tel %><br>
