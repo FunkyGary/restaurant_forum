@@ -32,6 +32,16 @@
       <% end %>
       </div>
     </div>
+    <% @restaurant.commets.each do |commet| %>
+      <div>
+        <h4><%= commet.user.email.split("@")[0] %></h4>
+        <p><%= simple_format commet.content %></p>
+        <p class="text-muted">
+          <em><%= time_ago_in_words(commet.created_at) %> </em>
+        </p>
+      </div>
+      <hr>
+    <% end %>
     <div class="clearfix"></div>
 
     <hr>
