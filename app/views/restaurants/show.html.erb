@@ -40,6 +40,9 @@
           <em><%= time_ago_in_words(commet.created_at) %> </em>
         </p>
       </div>
+      <% if current_user.admin? %>
+        <%= link_to "Delete", restaurant_commet_path(@restaurant, commet), method: :delete %>
+      <% end %>
       <hr>
     <% end %>
     <div class="clearfix"></div>

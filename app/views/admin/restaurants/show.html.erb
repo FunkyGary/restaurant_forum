@@ -1,21 +1,29 @@
 <div class="container">
   <div class="row">
+    <div class="col-md-12">
+      <h1><%= @restaurant.name %></h1>
+      <p>[<%= @restaurant.category.name %>]</p>
+    </div>
 
-    <ul class="nav nav-pills nav-pills-center">
-      <li role="presentation">
-        <%= link_to "全部餐廳", root_path %>
-      </li>
-      <!-- 這邊判斷category==@category的時候要加 li.active -->
-      <% @categories.each do |category| %>
-        <li role="presentation" class="<%= "active" if category == @category %>">
-          <%= link_to category.name, category_path(category) %>
-        </li>
-      <% end %>
-    </ul>
+    <div class="col-md-4">
+      <%= image_tag @restaurant.image.url, class: "img-responsive center-block" %>
+      <br>
+      <div class="well">
+        <ul class="list-unstyled">
+          <li><strong>Opening Hour:</strong> <%= @restaurant.opening_hours %></li>
+          <li><strong>Tel:</strong> <%= @restaurant.tel %></li>
+          <li><strong>Address:</strong> <%= @restaurant.address %></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <!-- simple_format 可以將一些特殊符號轉為html，例如\n換行符號轉為html的<br> -->
+      <!-- https://ihower.tw/rails/actionview-helpers.html -->
+      <%= simple_format @restaurant.description %>
+    </div>
 
-    <br>
+    <div class="clearfix"></div>
 
-    <%= render partial: "shared/restaurant_list" %>
+    <hr>
 
   </div>
-</div>
