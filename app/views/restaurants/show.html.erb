@@ -34,7 +34,11 @@
     </div>
     <% @restaurant.commets.each do |commet| %>
       <div>
-        <h4><%= commet.user.email.split("@")[0] %></h4>
+        <% if commet.user.name %>
+          <h4><%= commet.user.name %></h4>
+          <% else %>
+          <h4><%= commet.user.email.split("@")[0] %></h4>
+        <% end %>
         <p><%= simple_format commet.content %></p>
         <p class="text-muted">
           <em><%= time_ago_in_words(commet.created_at) %> </em>
