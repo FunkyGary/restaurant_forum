@@ -1,4 +1,4 @@
-.restaurant-item {
+.restaurant-item .my-restaurant{
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 4px;
@@ -8,6 +8,14 @@
 .restaurant-item img {
   max-height: 180px;
   width: 100%;
+}
+
+.my-restaurant img {
+  height: 100px;
+}
+
+.panel-body.restaurant-item img {
+  max-height: 30px;
 }
 
 .restaurant-item .caption {

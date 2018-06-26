@@ -9,4 +9,5 @@ class User < ApplicationRecord
     self.role == "admin"
   end
   has_many :commets
+  has_many :restaurants, through: :commets
 end

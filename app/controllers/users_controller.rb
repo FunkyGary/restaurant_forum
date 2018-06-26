@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
+  def show
+    @commented_restaurants = @user.restaurants
+  end
+
   def update
     if @user.update(user_params)
       flash[:notice] = "user was successfully updated"
