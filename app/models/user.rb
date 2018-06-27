@@ -8,6 +8,10 @@ class User < ApplicationRecord
   def admin?
     self.role == "admin"
   end
-  has_many :commets
+  # 如果 User 已經有了評論，就不允許刪除帳號（刪除時拋出 Error）
+  has_many :commets, dependent: :restrict_with_error
   has_many :restaurants, through: :commets
+  # 「使用者收藏很多餐廳」的多對多關聯
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_restaurants, through: :favorites, source: :restaurant
 end
