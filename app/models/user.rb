@@ -17,5 +17,9 @@ class User < ApplicationRecord
   # 「使用者收藏很多餐廳」的多對多關聯
   has_many :likes, dependent: :destroy
   has_many :liked_restaurants, through: :likes, source: :restaurant
+  # 一個 User 擁有很多追蹤紀錄 (followships)
+  # 透過追蹤紀錄，一個 User 追蹤很多其他 User (followings)
+  has_many :followships, dependent: :destroy
+  has_many :followings, through: :followships
 
 end

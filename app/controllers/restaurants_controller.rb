@@ -15,6 +15,10 @@ class RestaurantsController < ApplicationController
     @recent_commets = Commet.order(created_at: :desc).limit(10)
   end
 
+  def ranking
+    @restaurants = Restaurant.order(favorites_count: :desc).limit(10)
+  end
+
   def favorite
     @restaurant.favorites.create!(user: current_user)
     redirect_back(fallback_location: root_path)  # 導回上一頁

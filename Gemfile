@@ -38,6 +38,8 @@ gem 'kaminari'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
+# debug
+gem 'pry', '~> 0.10.3'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 # Use Capistrano for deployment
