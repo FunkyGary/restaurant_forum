@@ -24,6 +24,9 @@ class User < ApplicationRecord
   # 透過追蹤紀錄，一個 User 追蹤很多其他 User (followings)
   has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
+  # 一個 User 擁有很多朋友 (friendships)
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships
   # 「使用者有很多追蹤者」的多對多關聯
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
   has_many :followers, through: :inverse_followships, source: :user
