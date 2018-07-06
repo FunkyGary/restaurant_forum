@@ -4,5 +4,9 @@
   <% else %>
     <%= link_to 'Follow', followships_path(following_id: user), method: :post %>
   <% end %>
-  <%= link_to 'Friend', friendships_path(following_id: user), method: :post %>
+  <% if current_user.friend?(user)%>
+    <%= link_to 'Unfriend', friendship_path(user), method: :delete %>
+  <% else %>
+    <%= link_to 'Friend', friendships_path(following_id: user), method: :post %>
+  <% end %>
 <% end %>
