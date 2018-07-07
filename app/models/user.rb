@@ -14,6 +14,10 @@ class User < ApplicationRecord
   def following?(user)
     self.followings.include?(user)
   end
+  def show_friends
+    self.all_friends = (self.friends + self.inverse_friends).uniq
+    self.save
+  end
   # 如果 User 已經有了評論，就不允許刪除帳號（刪除時拋出 Error）
   has_many :commets, dependent: :restrict_with_error
   has_many :restaurants, through: :commets
@@ -33,4 +37,7 @@ class User < ApplicationRecord
   # 「使用者有很多追蹤者」的多對多關聯
   has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
   has_many :followers, through: :inverse_followships, source: :user
+  # 「使用者有很多朋友」的多對多關聯
+  has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
+  has_many :inverse_friends, through: :inverse_friendships, source: :user
 end

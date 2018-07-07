@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="panel panel-default">
+      <h1> 朋友列表 </h1>
+      <div class="panel-body">
+        <% @all_friends.each do |user| %>
+          <div class="col-sm-6 col-md-4">
+            <%= link_to user_path(user) do %>
+            <div class="my-restaurant">
+              <%= image_tag @user.avatar.url, class: "img-responsive img-rounded" %>
+              <div class="caption">
+                <h3><%= link_to user.name %></h3>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <%= link_to 'Back to index', root_path %>
+  </div>
+</div>
