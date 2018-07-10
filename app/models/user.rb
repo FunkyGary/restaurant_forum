@@ -15,8 +15,7 @@ class User < ApplicationRecord
     self.followings.include?(user)
   end
   def show_friends
-    self.all_friends = (self.friends + self.inverse_friends).uniq
-    self.save
+    (self.friends + self.inverse_friends).uniq
   end
   # 如果 User 已經有了評論，就不允許刪除帳號（刪除時拋出 Error）
   has_many :commets, dependent: :restrict_with_error

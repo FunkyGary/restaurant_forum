@@ -23,8 +23,7 @@ class UsersController < ApplicationController
   end
 
   def friend_list
-    @user.show_friends
-    @all_friends = @user.all_friends
+    @all_friends = @user.show_friends
   end
 
   private
